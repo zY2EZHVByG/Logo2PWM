@@ -1,5 +1,4 @@
-[comment]: <> (# Logo2PWM)
-![Logo2PWM](https://github.com/gozhen/Logo2PWM/blob/master/server_source_code/server/app/static/LOGO2PWM_LOGO.png?raw=true "Logo2PWM"|width=100)
+![Logo2PWM](https://github.com/gozhen/Logo2PWM/blob/master/server_source_code/server/app/static/LOGO2PWM_LOGO.png?raw=true "Logo2PWM")
 
 
 

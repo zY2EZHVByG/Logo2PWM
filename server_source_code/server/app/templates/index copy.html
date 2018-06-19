@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+{% block head %}
+  {{ super() }}
+  <style type=text/css>
+    h1 { margin: 0 0 10px 0; background: url({{ url_for('static', filename='LOGO2PWM_LOGO.png') }}) no-repeat center; height: 125px}
+    h1 span, p.tagline { display: none; }
+  </style>
+  <script type=text/javascript>
+    $(function() {
+      $('h1').bind('mousedown contextmenu', function(event) {
+        if (event.button != 2)
+          return;
+        var box = $('div.logohint');
+        if (!box.is(':visible'))
+          box.animate({'height': 'show', 'opacity': 'show'}, 100);
+        event.preventDefault();
+        event.returnValue = false;
+        return false;
+      });
+    });
+  </script>
+{% endblock %}
+
+
+
+
+{% block body %}
+    
+  <h2>1. Please upload a motif logo image to begin.</h2>
+    <form action="{{ url_for('show_img') }}", method="post">
+      Select a file: <input type="file" name="file" value="{{request.form.input_logo_img}}">
+      <input type="submit">
+    </form>
+  
+  <p>{% endblock %}</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

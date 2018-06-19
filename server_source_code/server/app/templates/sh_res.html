@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+{% block head %}
+  {{ super() }}
+  <style type=text/css>
+    h1 {  margin: 0 0 10px 0; background: 
+      
+      url({{ url_for('static', filename='LOGO2PWM_LOGO.png') }}) no-repeat center; height: 125px}
+    h1 span, p.tagline { display: none; }
+
+  </style>
+  <script type=text/javascript>
+    $(function() {
+      $('h1').bind('mousedown contextmenu', function(event) {
+        if (event.button != 2)
+          return;
+        var box = $('div.logohint');
+        if (!box.is(':visible'))
+          box.animate({'height': 'show', 'opacity': 'show'}, 100);
+        event.preventDefault();
+        event.returnValue = false;
+        return false;
+      });
+    });
+  </script>
+{% endblock %}
+
+
+
+
+{% block body %}
+<a text-decoration: none; href="{{url_for('index')}}">
+
+  <h4 style="color:#B6B6B4">1. Upload a motif logo image.</h4>
+</a>
+
+  <hr>
+  <h4 style="color:#B6B6B4">2. Please click 'process' if the uploaded logo image is correct.</h4>
+  
+  <center><img src="{{img_logo}}" alt="motif image" ></center>
+  
+  <hr>
+  <h3 >Results: </h3>
+
+  <h4 >enoLOGOS regenerated logo: </h4>
+  <center><img src="{{enologo_regen}}" alt="enologo" ></center>
+
+
+  <!-- <br> -->
+  <h5 >Download PWM: </h5>
+  <pre style="font-size:100%"><a href="{{pwm_txt}}">TXT</a>       <a href="{{pwm_csv}}">CSV</a> </pre>
+  <h5 >Download MEME-MAST sdandard formatted PSSM (Position Specific Scoring Matrix) file: </h5>
+  <pre style="font-size:100%"><a href="{{meme_pssm_txt}}">TXT</a>  </pre>
+
+  <h5 >Download regenerated LOGO: </h5>
+  <pre style="font-size:100%"><a href="{{logo_pdf}}">PDF</a></pre>
+
+<!-- 
+  <h5 >Download enoLOGOS matrices: </h5>
+  <pre style="font-size:100%"><a href="{{enoLOGOS_pwms_txt}}">TXT</a>  </pre>
+ -->
+
+  <p>{% endblock %}</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

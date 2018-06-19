@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+{% block head %}
+  {{ super() }}
+  <style type=text/css>
+    h1 {  margin: 0 0 10px 0; background: 
+      
+      url({{ url_for('static', filename='LOGO2PWM_LOGO.png') }}) no-repeat center; height: 125px}
+    h1 span, p.tagline { display: none; }
+
+  </style>
+  <script type=text/javascript>
+    $(function() {
+      $('h1').bind('mousedown contextmenu', function(event) {
+        if (event.button != 2)
+          return;
+        var box = $('div.logohint');
+        if (!box.is(':visible'))
+          box.animate({'height': 'show', 'opacity': 'show'}, 100);
+        event.preventDefault();
+        event.returnValue = false;
+        return false;
+      });
+    });
+  </script>
+{% endblock %}
+
+
+{% block body %}
+<a text-decoration: none; href="{{url_for('index')}}">
+
+  <h4 style="color:#B6B6B4">1. Upload a sequence logo image.</h4>
+</a>
+
+  <hr>
+
+  <h4>2. Input the number of letter-columns, or leave it blank to let the app determine. </h4>
+  
+
+
+<form action="", method="post" enctype=multipart/form-data>
+  <center><input type="text" name="letter_cols" maxlength="2" size="2"></center>
+  
+  <center><img src="{{img_logo}}" alt="motif image" ></center>
+  <center><h4>click 'process' if the uploaded logo image is correct.</h4></center>
+  
+
+  <p><center> <input type="submit" value=Process> </center></p>
+
+</form>
+
+  <p>{% endblock %}</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

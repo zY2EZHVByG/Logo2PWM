@@ -1,0 +1,22 @@
+<!doctype html>
+{% block head %}
+<title>{% block title %}LOGO to PWM{% endblock %}</title>
+<meta charset=utf-8>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+
+<script type=text/javascript
+  src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+{% endblock %}
+
+<div class=box>
+  {% block body_title %}
+  <a href="{{url_for('index')}}">
+    <h1><span>{{ self.title() }}</span></h1>
+  </a>
+  {% endblock %}
+
+  {% block body %}{% endblock %}
+
+  <p class=footer>
+    &copy; Copyright 2015 by <a href="http://www.cs.utsa.edu/~jruan/Personnel.html"/>Zhen Gao</a>
+</div>

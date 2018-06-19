@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+{% block head %}
+  {{ super() }}
+  <style type=text/css>
+    h1 { margin: 0 0 10px 0; background: url({{ url_for('static', filename='LOGO2PWM_LOGO.png') }}) no-repeat center; height: 125px}
+    h1 span, p.tagline { display: none; }
+  </style>
+  <script type=text/javascript>
+    $(function() {
+      $('h1').bind('mousedown contextmenu', function(event) {
+        if (event.button != 2)
+          return;
+        var box = $('div.logohint');
+        if (!box.is(':visible'))
+          box.animate({'height': 'show', 'opacity': 'show'}, 100);
+        event.preventDefault();
+        event.returnValue = false;
+        return false;
+      });
+    });
+  </script>
+{% endblock %}
+
+
+
+
+{% block body %}
+    
+  <h4>1. Drag/choose a sequence logo image to begin.</h4>
+    <form action="", method="post" enctype=multipart/form-data>
+      <p><input type="file" name="file" >
+      <input type="submit" value=Upload>
+    </form>
+    
+    <p class=footer><a href="{{url_for('download_source')}}"/>Download source code</a>
+
+  <p>{% endblock %}</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

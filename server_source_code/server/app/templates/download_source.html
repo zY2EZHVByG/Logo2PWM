@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+{% block head %}
+  {{ super() }}
+  <style type=text/css>
+    h1 { margin: 0 0 10px 0; background: url({{ url_for('static', filename='LOGO2PWM_LOGO.png') }}) no-repeat center; height: 125px}
+    h1 span, p.tagline { display: none; }
+  </style>
+  <script type=text/javascript>
+    $(function() {
+      $('h1').bind('mousedown contextmenu', function(event) {
+        if (event.button != 2)
+          return;
+        var box = $('div.logohint');
+        if (!box.is(':visible'))
+          box.animate({'height': 'show', 'opacity': 'show'}, 100);
+        event.preventDefault();
+        event.returnValue = false;
+        return false;
+      });
+    });
+  </script>
+{% endblock %}
+
+
+
+
+{% block body %}
+    
+  <h4>
+    <a href="{{ url_for('static', filename='source_code.zip') }}">Download Source Code</a>  </h4>
+<br>
+
+
+  <h4>To run, open MATLAB; cd to the location of f_logo_to_PWM_publish():</h4>
+
+    <p><pre style="font-size:100%"> >> f_logo_to_PWM_publish([logo image file])</pre></p>
+ 
+  <p>or </p>
+
+    <p><pre style="font-size:100%"> >> f_logo_to_PWM_publish([logo image file], [#letter columns])</pre></p>
+
+
+
+
+
+<br>
+  <h4>To compile, install MATLAB compiler runtime 9.0;  in MATLAB, input:</h4>
+  <p><pre style="font-size:100%"> >> mcc -m f_logo_to_PWM_publish.m</pre></p>
+  <p>The executable will be generated in place. </p>
+
+
+<p>  </p>
+<br>
+
+
+<h4>You can also download the compiled executables for:</h4>
+  <p>&nbsp;&nbsp;&nbsp;
+  <a href="{{ url_for('static', filename='f_logo_to_PWM_publish.exe') }}">Windows</a> 
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     
+  <a href="{{ url_for('static', filename='f_logo_to_PWM_publish') }}">OS X</a> </p>
+
+
+<br>
+  <h4>To run executable, open a terminal/cmd:</h4>
+  <p><pre style="font-size:100%"> $ [executable] [logo image file] [#letter columns (optional)]</pre></p>
+
+  
+  <p>{% endblock %}</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

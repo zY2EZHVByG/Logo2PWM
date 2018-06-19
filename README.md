@@ -27,6 +27,7 @@ or
 Please check [**_this article_**](https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-017-4023-9) for demos, design and algorithms. 
 
 <br>
+
 ---
 
 ### Compile and run executable

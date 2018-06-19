@@ -14,7 +14,7 @@ In the field of molecular biology, there are often situations that in a publicat
 
 ### Tutorial
 
-#### To run from source code
+#### Run from source code
 Download source code, open MATLAB, go to to the location of f_logo_to_PWM_publish.m (e.g.: ./source_code/):
 
 ```
@@ -26,8 +26,9 @@ or
 ```
 Please check [**_this article_**](https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-017-4023-9) for demos, design and algorithms. 
 
+---
 
-#### To compile and run executable
+#### Compile and run executable
 Install MATLAB compiler runtime 9.0; in MATLAB, input:
 
 ```
@@ -43,7 +44,7 @@ $ [executable] [logo image file] [#letter columns (optional)]
 ```
 
 
-#### To deploy the server
+#### Deploy the server
 Make sure Python and Flask are installed, then go to ./server_source_code/server/, run:
 ```
 python ./run.py

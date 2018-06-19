@@ -1,16 +1,16 @@
-## Logo2PWM
+# Logo2PWM
 
 Logo2PWM is a tool to convert sequence logo back to position weight matrix. 
 
 In the field of gene biology, there are often situations such that in a publication, only the sequence logos of the motifs are provided, however, the corresponding PWMs are hard to be acquired. In order to do more researches on these motifs, we need a tool to quickly and accurately convert the sequence logos back to PWMs, that is why we made Logo2PWM.
 
 
-#### Folder description
+### Folder description
 [**_./source_code/_**](https://github.com/gozhen/Logo2PWM/tree/master/source_code) - source code
 
 [**_./server_source_code/_**](https://github.com/gozhen/Logo2PWM/tree/master/server_source_code) - server source code
 
-
+### tutorial
 
 To run from source code, download source code; open MATLAB; go to to the location of f_logo_to_PWM_publish.m (e.g.: ./source_code/):
 
@@ -43,9 +43,9 @@ python ./run.py
 ```
 
 
-### Reference
+## Reference
 
-Please cite [this article](https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-017-4023-9):
+Please cite [**_this article_**](https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-017-4023-9):
 
 BibTex:
 ```

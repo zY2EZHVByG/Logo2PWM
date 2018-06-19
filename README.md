@@ -2,7 +2,7 @@
 
 Logo2PWM is a tool to convert sequence logo back to position weight matrix. 
 
-In the field of gene biology, there are often situations such that in a publication, only the sequence logos of the motifs are provided, however, the corresponding PWMs are hard to be acquired. In order to do more researches on these motifs, we need a tool to quickly and accurately convert the sequence logos back to PWMs, that is why we made Logo2PWM.
+In the field of molecular biology, there are often situations that in a publication, only the sequence logos of the motifs are provided, however, the corresponding PWMs are hard to be acquired. In order to do more researches on these motifs, we need a tool to quickly and accurately convert the sequence logos back to PWMs, that is why we made Logo2PWM.
 
 
 ### Folder description
@@ -12,7 +12,7 @@ In the field of gene biology, there are often situations such that in a publicat
 
 ### Tutorial
 
-To run from source code, download source code; open MATLAB; go to to the location of f_logo_to_PWM_publish.m (e.g.: ./source_code/):
+To run from source code, download source code, open MATLAB, go to to the location of f_logo_to_PWM_publish.m (e.g.: ./source_code/):
 
 ```
 >> f_logo_to_PWM_publish([logo image file])

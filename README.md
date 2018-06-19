@@ -41,7 +41,7 @@ To deploy the server, make sure Python and Flask are installed, then go to ./ser
 ```
 python ./run.py
 ```
-
+[A running server](http://www.cs.utsa.edu/~jruan/logo2pwm/)
 
 ## Reference
 

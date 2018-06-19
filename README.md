@@ -28,7 +28,6 @@ Please check [**_this article_**](https://bmcgenomics.biomedcentral.com/articles
 
 <br>
 
----
 
 ### Compile and run executable
 Install MATLAB compiler runtime 9.0; in MATLAB, input:

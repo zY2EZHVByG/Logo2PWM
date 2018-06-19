@@ -23,6 +23,8 @@ or
 ```
 >> f_logo_to_PWM_publish([logo image file], [#letter columns])
 ```
+Please check [**_this article_**](https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-017-4023-9) for demos, design and algorithms. 
+
 
 To compile, install MATLAB compiler runtime 9.0; in MATLAB, input:
 

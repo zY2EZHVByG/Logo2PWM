@@ -7,14 +7,14 @@ Logo2PWM is a tool to convert sequence logo back to position weight matrix.
 In the field of molecular biology, there are often situations that in a publication, only the sequence logos of the motifs are provided, however, the corresponding PWMs are hard to be acquired. In order to do more researches on these motifs, we need a tool to quickly and accurately convert the sequence logos back to PWMs, that is why we made Logo2PWM.
 
 
-### Folder description
+## Folder description
 [**_./source_code/_**](https://github.com/gozhen/Logo2PWM/tree/master/source_code) - source code
 
 [**_./server_source_code/_**](https://github.com/gozhen/Logo2PWM/tree/master/server_source_code) - server source code
 
-### Tutorial
+## Tutorial
 
-#### Run from source code
+### Run from source code
 Download source code, open MATLAB, go to to the location of f_logo_to_PWM_publish.m (e.g.: ./source_code/):
 
 ```
@@ -28,7 +28,7 @@ Please check [**_this article_**](https://bmcgenomics.biomedcentral.com/articles
 
 ---
 
-#### Compile and run executable
+### Compile and run executable
 Install MATLAB compiler runtime 9.0; in MATLAB, input:
 
 ```
@@ -44,14 +44,14 @@ $ [executable] [logo image file] [#letter columns (optional)]
 ```
 
 
-#### Deploy the server
+### Deploy the server
 Make sure Python and Flask are installed, then go to ./server_source_code/server/, run:
 ```
 python ./run.py
 ```
 [A running server](http://www.cs.utsa.edu/~jruan/logo2pwm/)
 
-## Reference
+# Reference
 
 Please cite [**_this article_**](https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-017-4023-9):
 

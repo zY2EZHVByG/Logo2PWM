@@ -10,7 +10,7 @@ In the field of gene biology, there are often situations such that in a publicat
 
 [**_./server_source_code/_**](https://github.com/gozhen/Logo2PWM/tree/master/server_source_code) - server source code
 
-### tutorial
+### Tutorial
 
 To run from source code, download source code; open MATLAB; go to to the location of f_logo_to_PWM_publish.m (e.g.: ./source_code/):
 

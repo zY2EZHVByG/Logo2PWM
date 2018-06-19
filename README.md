@@ -26,6 +26,7 @@ or
 ```
 Please check [**_this article_**](https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-017-4023-9) for demos, design and algorithms. 
 
+<br>
 ---
 
 ### Compile and run executable
@@ -50,6 +51,8 @@ Make sure Python and Flask are installed, then go to ./server_source_code/server
 python ./run.py
 ```
 [A running server](http://www.cs.utsa.edu/~jruan/logo2pwm/)
+
+<br>
 
 ## Reference
 

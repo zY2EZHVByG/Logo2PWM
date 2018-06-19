@@ -45,7 +45,7 @@ python ./run.py
 
 ### Reference
 
-Please cite this article:
+Please cite [this article](https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-017-4023-9):
 
 BibTex:
 ```

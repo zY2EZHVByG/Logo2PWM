@@ -5,4 +5,4 @@
   subfunctions
 
 ./test_logos/
-  test logos
+  testing logos

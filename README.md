@@ -1,4 +1,7 @@
 # Logo2PWM
+![Logo2PWM](https://github.com/gozhen/Logo2PWM/blob/master/server_source_code/server/app/static/LOGO2PWM_LOGO.png?raw=true "Logo2PWM")
+
+
 
 Logo2PWM is a tool to convert sequence logo back to position weight matrix. 
 

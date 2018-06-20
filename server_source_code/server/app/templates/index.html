@@ -26,15 +26,32 @@
 
 {% block body %}
     
-  <h4>1. Drag/choose a sequence logo image to begin.</h4>
+  <h4>Drag/choose a sequence logo image to begin.</h4>
     <form action="", method="post" enctype=multipart/form-data>
       <p><input type="file" name="file" >
       <input type="submit" value=Upload>
     </form>
     
-    <p class=footer><a href="{{url_for('download_source')}}"/>Source code and reference</a>
+
+<br>
+  <h4> <a href="https://github.com/gozhen/Logo2PWM">Github repository</a> </h4>
+
+  <h4><a href="{{ url_for('download_source') }}">Source code and tutorial</a>  </h4>
+
+<hr>
+<h4><b>Reference</b></h4>
+<h4>Please refer to <a href="https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-017-4023-9"><b><u>this article</a></u></b> for demos, design and algorithms. </h4>
+  <p><pre style="font-size:80%"> @article{gao2017logo2pwm,
+  title={Logo2PWM: a tool to convert sequence logo to position weight matrix},
+  author={Gao, Zhen and Liu, Lu and Ruan, Jianhua}, journal={BMC genomics}, 
+  volume={18}, number={6}, pages={709}, year={2017}, publisher={BioMed Central} }
+ </pre></p>
+ <h4>Many thanks for your support!
+ </h4>
+ </p>
 
   <p>{% endblock %}</p>
+
 
 
 

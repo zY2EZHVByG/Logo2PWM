@@ -24,7 +24,7 @@ or
 ```
 >> f_logo_to_PWM_publish([logo image file], [#letter columns])
 ```
-Please check [**_this article_**](https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-017-4023-9) for demos, design and algorithms. 
+Please refer [**_this article_**](https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-017-4023-9) for demos, design and algorithms. 
 
 <br>
 
@@ -56,7 +56,7 @@ python ./run.py
 
 ## Reference
 
-Please cite [**_this article_**](https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-017-4023-9):
+Please support us by citing [**_this article_**](https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-017-4023-9):
 
 BibTex:
 ```

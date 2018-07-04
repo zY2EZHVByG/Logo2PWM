@@ -2,9 +2,9 @@ function f_logo_to_PWM_publish(img_fname, n_letters)
 
 % Input the file name of a logo image file, output 3 files under the same folder:
 %
-%  1. a enologo format matrix file
-%  2. a csv format matrix file
-%  3. a meme format pssm file, can be used for MAST scanning.
+%  1. The enologo format matrix file
+%  2. The csv format matrix file
+%  3. The meme format pssm file, which can be used for MAST scanning.
 
 
 if nargin<2

@@ -30,7 +30,7 @@ elif platform.platform()[0:6] == 'Linux-':
         'run_f_logo_to_PWM_publish.sh  /share/apps/MATLAB/R2014b '
 
 # allowed file extensions
-ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
+ALLOWED_EXTENSIONS = set(['png','PNG', 'jpg','JPG', 'jpeg','JPEG', 'gif','GIF'])
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
@@ -114,7 +114,7 @@ def ger_enologo_url(fn):
         data=myfile.read()
     
     # start the mechanize browser
-    url = "http://www.benoslab.pitt.edu/cgi-bin/enologos/enologos.cgi"
+    url = "http://lagavulin.ccbb.pitt.edu/cgi-bin/enologos/enologos.cgi"
     br = mechanize.Browser()
     br.set_handle_robots(False) # ignore robots
     br.open(url)
@@ -134,19 +134,20 @@ def ger_enologo_url(fn):
     br["matrix"] = data
     res = br.submit()
 
-    download_url = 'http://www.benoslab.pitt.edu/enologos/tmp/'
+    download_url = 'http://lagavulin.ccbb.pitt.edu/enologos/tmp/'
     # find the link to the image
     code_str = ''
     for link in br.links():
-        if link.text[:5] == '[IMG]':
-            if link.url[:42] == download_url:
-                #print link.text, link.url
+        #print link.text
+        #print '   '
+        if link.text[:3] == 'PDF':
+            #print link.text, link.url
+        
+            print link.url, link.url[44:]
+            ix = link.url[44:].index('.')
             
-                #print link.url, link.url[42:]
-                ix = link.url[42:].index('.')
-                
-                #print link.url[42:][:ix]
-                code_str = link.url[42:][:ix]
+            #print link.url[42:][:ix]
+            code_str = link.url[44:][:ix]
     # return the image url, without the extension,
     return download_url+code_str
 

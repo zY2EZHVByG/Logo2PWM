@@ -1,9 +1,3 @@
-./server/
-  server source code folder.
-
-
-
----------------------------------------------------------------------
 MATLAB Compiler
 
 1. Prerequisites for Deployment 

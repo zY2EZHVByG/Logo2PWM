@@ -6,6 +6,7 @@ if nargin<2
     fname = '';
 end
 if strcmp(fname, '')
+    %f = fopen(1);
     f = 1;
 else
     f = fopen(fname, 'wt');
@@ -52,7 +53,11 @@ for i=1:len
 end
 fprintf(f, '\n');
 
-fclose(f);
+try
+    fclose(f);
+catch
+    
+end
 
 end
 

@@ -1,6 +1,10 @@
 function [PWM, consensus] = f_logo_to_PWM(img_name, cnt)
 % convert a image format motif logo to PWM
 % cnt: number of letters of the logo.
+if nargin < 2
+    cnt = 0;
+end
+
 
 PWM=[];consensus='';
 
@@ -17,8 +21,16 @@ if strcmp(img_name(end-2:end), 'gif')
     
 end
 
-A = imread(img_name);
+[A,map2,~] = imread(img_name);
 % I is the grey scale image
+%figure,imshow(A);
+if ~isempty(map2)
+    A = ind2rgb(A, map2);
+end
+if max(A(:)) == 1
+    A = A.*255;
+end
+
 I = rgb2gray(A);
 %figure,imshow(I);
 
@@ -33,15 +45,18 @@ I = rgb2gray(A);
 level = 0.8;
 % --------------------------------------------
 bw = im2bw(A,level);
-%figure,imshow(bw)
+% figure,imshow(bw)
 
 % determine if the logo has coordinates, if yes, use the old code, if
 %  no coordinates, use the revised code. 
 B = f_img_keepBlk(A);
+% figure, imagesc(B);
+
 [hasY, hasX] = f_if_have_XY_axis(B);
 
 % cut the image, get only the true logo area 
-[x1, x2, y1, y2,tmp]=f_determine_true_logo_edge(bw, B, hasX, hasY, I);
+[x1, x2, y1, y2,below_x_sum, below_x] = ...
+    f_determine_true_logo_edge(bw, B, hasX, hasY, I);
 % ----------------------- added on 20160201 -----------------------------
 % if the image is too short that not even a single character can be seen,
 %  then quit.
@@ -52,7 +67,8 @@ else
     % from the true logo area, get the column count
     %  len_lt: width of letter; cnt: count of letters.
     if cnt == 0 % let the program determine the number of letters
-        [len_lt, cnt]=f_width_each_letter(x1,x2,y1,y2,hasX,hasY,bw,tmp, I);
+        [len_lt, cnt]=f_width_each_letter(x1,x2,y1,y2,hasX,hasY,bw, ...
+            below_x_sum, below_x, I);
     else
         % specifiy the number of letters by user
         len_lt = round(abs(x2-x1) ./ cnt);
@@ -78,7 +94,7 @@ else
     consensus = repmat(' ', [1, cnt]);
     %for i=1:cnt
     % --------------------------------------
-    %figure,
+%     figure,
     % --------------------------------------
 
     A_sub = f_rm_black_pixels(A_sub);
@@ -86,7 +102,7 @@ else
         colImg = A_sub(:, nodes_x(i):nodes_x(i+1), : );
         %size(colImg),
         % --------------------------------------
-        %subplot(1,cnt,i),imshow(colImg);
+%         subplot(1,cnt,i),imshow(colImg);
         % --------------------------------------
         %i,
         %size(colImg),
@@ -105,7 +121,7 @@ else
 
 
 end % from 'if image is too narrow'
-
+PWM = f_normpwm(PWM);
 % pwd,
 % which f_logo_to_PWM
 end

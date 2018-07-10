@@ -1,7 +1,8 @@
-function [x1, x2, y1, y2, tmp] = f_determine_true_logo_edge(bw, B, hasX, hasY, I)
+function [x1, x2, y1, y2, below_x_sum, below_x] = f_determine_true_logo_edge(bw, B, hasX, hasY, I)
 %
 
-tmp = [];
+below_x_sum = [];
+below_x = [];
 
 if hasY==1 && hasX==0
     [x1, x2, y1, y2] = f_find_axs(bw, hasX, B);
@@ -9,13 +10,13 @@ if hasY==1 && hasX==0
 
 % -----------------------------------------------------------------------
 elseif hasY==0 && hasX==0
-    tmp = sum(~bw);
-    ixs = find(tmp~=0);
+    below_x_sum = sum(~bw);
+    ixs = find(below_x_sum~=0);
     x1 = ixs(1);
     x2 = ixs(end);
 
-    tmp = sum(~bw, 2);
-    ixs = find(tmp~=0);
+    below_x_sum = sum(~bw, 2);
+    ixs = find(below_x_sum~=0);
     y1 = ixs(1);
     y2 = ixs(end);
 
@@ -42,10 +43,10 @@ elseif hasY==1 && hasX==1
     % count the number of letters
     % find how many times tmp changed from zero to non-zero.
     %  (find the number of x ticks)
-    tmp1 = ~bw(y2+2+gap:end, x1:x2);
-    %figure, imshow(tmp1);
+    below_x = ~bw(y2+2+gap:end, x1:x2);
+    % figure, imshow(tmp1);
     
-    tmp = sum(tmp1);
+    below_x_sum = sum(below_x);
 
     %figure, plot(tmp);
 end

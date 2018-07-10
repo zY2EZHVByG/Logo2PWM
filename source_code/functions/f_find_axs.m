@@ -4,6 +4,7 @@ function [x1, x2, y1, y2] = f_find_axs(bw, hasX, B)
 %tmp = sum(~bw);
 tmp = sum(B);
 % figure,plot(tmp),
+
 tmp2 = tmp;
 tmp3 = tmp + 1;
 for i=(1+2):(length(tmp)-2)

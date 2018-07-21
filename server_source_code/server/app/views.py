@@ -6,7 +6,7 @@ import mechanize
 import time
 import platform
 from random import randint
-
+import seqlogo 
 
 # need to change UPLOAD_FOLDER and exe_path when run on a new platform.
 if platform.platform()[0:6] == 'Darwin': # if my macbook
@@ -41,6 +41,7 @@ fn_csv_pure = ''
 fn_txt_pure_meme_pssm = ''
 logo_url_pdf = ''
 logo_url_png = ''
+fn_rg_logo_png = ''
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -174,16 +175,20 @@ def show_img():
         global fn_txt_pure_meme_pssm
         global logo_url_pdf
         global logo_url_png
+        global fn_rg_logo_png
 
         fn_txt_pure = fn_prefix + '_enoLogo.txt'
         fn_csv_pure = fn_prefix + '.csv'
         fn_txt_pure_meme_pssm = fn_prefix + '_meme_pssm.txt'
         fn_txt = app.config['UPLOAD_FOLDER'] + fn_txt_pure
 
-        logo_url = ger_enologo_url(fn_txt)
-        logo_url_pdf = logo_url + '.pdf'
-        logo_url_png = logo_url + '.png'
+
+        #logo_url = ger_enologo_url(fn_txt)
+        #logo_url_pdf = logo_url + '.pdf'
+        #logo_url_png = fn_prefix + '_rg_logo.png'
+        fn_rg_logo_png = fn_prefix + '_rg_logo.png'
         #url_enologo_matrices = logo_url + '.logo_log'
+        # seqlogo.f_draw_logo_from_pwm(app.config['UPLOAD_FOLDER'] + fn_csv_pure)
 
         print "hehe"
         return redirect(url_for('sh_res'))
@@ -192,8 +197,7 @@ def show_img():
             pwm_txt=url_for('uploaded_file', filename=fn_txt_pure), \
             pwm_csv=url_for('uploaded_file', filename=fn_csv_pure), \
             meme_pssm_txt=url_for('uploaded_file', filename=fn_txt_pure_meme_pssm), \
-            enologo_regen=logo_url_png, \
-            logo_pdf=logo_url_pdf )
+            enologo_regen=url_for('uploaded_file', filename=fn_rg_logo_png) )
 
     
     print filename
@@ -210,8 +214,7 @@ def sh_res():
         pwm_txt=url_for('uploaded_file', filename=fn_txt_pure), \
         pwm_csv=url_for('uploaded_file', filename=fn_csv_pure), \
         meme_pssm_txt=url_for('uploaded_file', filename=fn_txt_pure_meme_pssm), \
-        enologo_regen=logo_url_png, \
-        logo_pdf=logo_url_pdf )
+        enologo_regen=url_for('uploaded_file', filename=fn_rg_logo_png) )
 
 
 # download_source page

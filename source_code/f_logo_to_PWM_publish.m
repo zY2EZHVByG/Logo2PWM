@@ -1,10 +1,12 @@
 function f_logo_to_PWM_publish(img_fname, n_letters)
 
-% Input the file name of a logo image file, output 3 files under the same folder:
+% Input the file name of a logo image file, output 4 files under the same 
+%   folder:
 %
 %  1. The enologo format matrix file
 %  2. The csv format matrix file
 %  3. The meme format pssm file, which can be used for MAST scanning.
+%  4. The re-generated logo image for verification purpose
 
 
 if nargin<2
@@ -35,6 +37,7 @@ end
 fname_enologo_txt = [prefix, '_enoLogo.txt' ];
 fname_csv = [prefix, '.csv' ];
 fname_meme_pssm_txt = [prefix, '_meme_pssm.txt' ];
+fname_re_draw_logo_img = [prefix, '_rg_logo.png' ];
 
 
 %% Re-format the PWM to a enologos format, generate a txt file
@@ -48,6 +51,12 @@ f_PWM_to_csv(PWM, fname_csv);
 %% Generate a PSSM (Position-specific scoring matrix) and a MEME standard file for MEME-MAST motif scanning
 PSSM = f_PWM_to_PSSM(PWM);
 f_PSSMs_to_MEME_motif_file({PSSM}, {consensus}, fname_meme_pssm_txt);
+
+%% Re-draw the logo image for verification purpose
+seqs = f_pwm_to_fake_seqs(PWM');
+[~, handle] = seqlogo(seqs);
+print(handle, fname_re_draw_logo_img, '-dpng','-r60');
+close(handle)
 
 end
 

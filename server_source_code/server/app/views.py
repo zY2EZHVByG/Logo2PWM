@@ -6,7 +6,7 @@ import mechanize
 import time
 import platform
 from random import randint
-import seqlogo 
+import pwm2logo 
 
 # need to change UPLOAD_FOLDER and exe_path when run on a new platform.
 if platform.platform()[0:6] == 'Darwin': # if my macbook
@@ -188,7 +188,7 @@ def show_img():
         #logo_url_png = fn_prefix + '_rg_logo.png'
         fn_rg_logo_png = fn_prefix + '_rg_logo.png'
         #url_enologo_matrices = logo_url + '.logo_log'
-        # seqlogo.f_draw_logo_from_pwm(app.config['UPLOAD_FOLDER'] + fn_csv_pure)
+        # pwm2logo.f_draw_logo_from_pwm(app.config['UPLOAD_FOLDER'] + fn_csv_pure)
 
         print "hehe"
         return redirect(url_for('sh_res'))

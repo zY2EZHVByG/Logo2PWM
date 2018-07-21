@@ -90,8 +90,8 @@ def f_read_pwm_file(fn):
     return py_pwm
 
 ## test
-#fn = '/Users/zhengao/Dropbox/share/Logo2PWM/server_source_code/examples/abcde.csv'
-#fn = '/Users/zhengao/Dropbox/share/Logo2PWM/server_source_code/examples/ABF1.csv'
+#fn = './abcde.csv'
+#fn = './ABF1.csv'
 #print f_read_pwm_file(fn)
 #py_pwm = f_read_pwm_file(fn)
 
@@ -119,14 +119,10 @@ def f_plot_seqlogo(py_pwm):
     plt.show()
     return fig
     
-#fn = '/Users/zhengao/Dropbox/share/Logo2PWM/server_source_code/server/app/'+\
-#    'templates/files/423312551620motif1_553.csv'
-#fn = '/Users/zhengao/Dropbox/share/Logo2PWM/server_source_code/server/app/'+\
-#    'templates/files/a.csv'
-#fn = '/Users/zhengao/Dropbox/share/Logo2PWM/server_source_code/server/app/'+\
-#    'templates/files/ACE2.csv'
-#fn = '/Users/zhengao/Dropbox/share/Logo2PWM/server_source_code/server/app/'+\
-#    'templates/files/image_111.csv'
+#fn = './423312551620motif1_553.csv'
+#fn = './a.csv'
+#fn = './ACE2.csv'
+#fn = './image_111.csv'
 #py_pwm = f_read_pwm_file(fn)
 #f_plot_seqlogo(py_pwm)
 
@@ -141,9 +137,8 @@ def f_draw_logo_from_pwm(fn_csv):
     
     fig.savefig(fn_rg_logo)
 
-fn_csv = '/Users/zhengao/Dropbox/share/Logo2PWM/server_source_code/server/app/'+\
-    'templates/files/image_111.csv'
-f_draw_logo_from_pwm(fn_csv)
+# fn_csv = './image_111.csv'
+# f_draw_logo_from_pwm(fn_csv)
 
 
 

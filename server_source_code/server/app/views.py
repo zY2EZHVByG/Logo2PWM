@@ -115,7 +115,8 @@ def ger_enologo_url(fn):
         data=myfile.read()
     
     # start the mechanize browser
-    url = "http://lagavulin.ccbb.pitt.edu/cgi-bin/enologos/enologos.cgi"
+    #url = "http://lagavulin.ccbb.pitt.edu/cgi-bin/enologos/enologos.cgi"
+    url = "http://www.benoslab.pitt.edu/cgi-bin/enologos/enologos.cgi"
     br = mechanize.Browser()
     br.set_handle_robots(False) # ignore robots
     br.open(url)
@@ -135,7 +136,8 @@ def ger_enologo_url(fn):
     br["matrix"] = data
     res = br.submit()
 
-    download_url = 'http://lagavulin.ccbb.pitt.edu/enologos/tmp/'
+    #download_url = 'http://lagavulin.ccbb.pitt.edu/enologos/tmp/'
+    download_url = 'http://www.benoslab.pitt.edu/enologos/tmp/'
     # find the link to the image
     code_str = ''
     for link in br.links():
@@ -183,12 +185,12 @@ def show_img():
         fn_txt = app.config['UPLOAD_FOLDER'] + fn_txt_pure
 
 
-        #logo_url = ger_enologo_url(fn_txt)
-        #logo_url_pdf = logo_url + '.pdf'
-        #logo_url_png = fn_prefix + '_rg_logo.png'
+        logo_url = ger_enologo_url(fn_txt)
+        logo_url_pdf = logo_url + '.pdf'
+        logo_url_png = fn_prefix + '_rg_logo.png'
         fn_rg_logo_png = fn_prefix + '_rg_logo.png'
-        #url_enologo_matrices = logo_url + '.logo_log'
-        # pwm2logo.f_draw_logo_from_pwm(app.config['UPLOAD_FOLDER'] + fn_csv_pure)
+        url_enologo_matrices = logo_url + '.logo_log'
+        pwm2logo.f_draw_logo_from_pwm(app.config['UPLOAD_FOLDER'] + fn_csv_pure)
 
         print "hehe"
         return redirect(url_for('sh_res'))

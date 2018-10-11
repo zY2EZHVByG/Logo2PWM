@@ -6,7 +6,7 @@ import mechanize
 import time
 import platform
 from random import randint
-import pwm2logo 
+#import pwm2logo 
 
 # need to change UPLOAD_FOLDER and exe_path when run on a new platform.
 if platform.platform()[0:6] == 'Darwin': # if my macbook
@@ -146,11 +146,12 @@ def ger_enologo_url(fn):
         if link.text[:3] == 'PDF':
             #print link.text, link.url
         
-            print link.url, link.url[44:]
-            ix = link.url[44:].index('.')
+            print link.url, link.url[42:]
+            #ix = link.url[44:].index('.')
+            ix = link.url[42:].index('.')
             
             #print link.url[42:][:ix]
-            code_str = link.url[44:][:ix]
+            code_str = link.url[42:][:ix]
     # return the image url, without the extension,
     return download_url+code_str
 
@@ -163,6 +164,7 @@ def show_img():
     if request.method == 'POST':
         letter_cols = request.form['letter_cols']
         # run the executable Matlab code 
+        print exe_path+app.config['UPLOAD_FOLDER']+filename+' '+letter_cols
         print os.popen(exe_path + \
             app.config['UPLOAD_FOLDER']+filename+' '+letter_cols).read()
         # now the matrix txt file has been generated, 
@@ -187,10 +189,14 @@ def show_img():
 
         logo_url = ger_enologo_url(fn_txt)
         logo_url_pdf = logo_url + '.pdf'
-        logo_url_png = fn_prefix + '_rg_logo.png'
+        #logo_url_png = fn_prefix + '_rg_logo.png'
+        logo_url_png = logo_url + '.png'
+        print logo_url_png
+        print logo_url_pdf
         fn_rg_logo_png = fn_prefix + '_rg_logo.png'
         url_enologo_matrices = logo_url + '.logo_log'
-        pwm2logo.f_draw_logo_from_pwm(app.config['UPLOAD_FOLDER'] + fn_csv_pure)
+        #pwm2logo.f_draw_logo_from_pwm(app.config['UPLOAD_FOLDER'] + fn_csv_pure)
+        
 
         print "hehe"
         return redirect(url_for('sh_res'))
@@ -199,7 +205,9 @@ def show_img():
             pwm_txt=url_for('uploaded_file', filename=fn_txt_pure), \
             pwm_csv=url_for('uploaded_file', filename=fn_csv_pure), \
             meme_pssm_txt=url_for('uploaded_file', filename=fn_txt_pure_meme_pssm), \
-            enologo_regen=url_for('uploaded_file', filename=fn_rg_logo_png) )
+            enologo_regen=logo_url_png, \
+            logo_pdf=logo_url_pdf )
+            #enologo_regen=url_for('uploaded_file', filename=fn_rg_logo_png) )
 
     
     print filename
@@ -216,7 +224,9 @@ def sh_res():
         pwm_txt=url_for('uploaded_file', filename=fn_txt_pure), \
         pwm_csv=url_for('uploaded_file', filename=fn_csv_pure), \
         meme_pssm_txt=url_for('uploaded_file', filename=fn_txt_pure_meme_pssm), \
-        enologo_regen=url_for('uploaded_file', filename=fn_rg_logo_png) )
+        enologo_regen=logo_url_png, \
+        logo_pdf=logo_url_pdf )
+        #enologo_regen=url_for('uploaded_file', filename=fn_rg_logo_png) )
 
 
 # download_source page

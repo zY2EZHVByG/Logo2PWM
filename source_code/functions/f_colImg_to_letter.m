@@ -1,7 +1,32 @@
 function [letter,startp,endp,letterImg,restImg]=f_colImg_to_letter(colImg)
 
+
 % convert to a line image
-tmp1 = min( colImg, [], 2 );
+%figure, imagesc(f_find_cp(colImg, 'w'))
+% figure, imshow(colImg);
+whites = f_find_cp(colImg, 'w');
+for i=1:size(colImg, 1)
+    i,
+    r = colImg(i, :, :);
+    not_whites = r(1, ~whites(i,:), :);
+    if size(not_whites,2) > 0 && sum(whites(i, :)) > 0
+        m = median(not_whites, 2);
+        r(1, whites(i,:), :) = repmat(reshape(m, [1,1,length(m)]),[1 sum(whites(i,:)) 1]);
+        colImg(i, :, :) = r;
+    end
+end
+% figure, imshow(colImg);
+%tmp1 = min( colImg, [], 2 );
+colImg_p = double(colImg);
+whites = f_find_cp(colImg_p, 'w');
+for i=1:3
+    tmp = colImg_p(:, :, i);
+    tmp(whites) = nan;
+    colImg_p(:, :, i) = tmp;
+end
+%colImg_p(whites, :) = nan;
+tmp1 = nanmedian( colImg, 2 );
+% figure, imshow(tmp1);
 
 % for a sub image, give every element a cluster code (color code)
 codes = zeros(length(tmp1), 1);

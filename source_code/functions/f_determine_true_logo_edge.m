@@ -21,7 +21,10 @@ elseif hasY==0 && hasX==0
     y2 = ixs(end);
 
     x1=x1-2;
-    if x1<=0; x1=1; end;
+    if x1<=0
+        x1=1; 
+    end
+    %figure,imshow(I(y1:y2, x1:x2));
 % -----------------------------------------------------------------------
 elseif hasY==1 && hasX==1
     % find y axis

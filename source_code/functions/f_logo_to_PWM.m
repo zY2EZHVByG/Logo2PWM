@@ -5,17 +5,15 @@ if nargin < 2
     cnt = 0;
 end
 
-
 PWM=[];consensus='';
 
+img_name = char(img_name);
 % if the image is gif file, convert it to png first.
 if strcmp(img_name(end-2:end), 'gif')
     [A, map] = imread(img_name);
     if ~isempty(A), A = ind2rgb(A, map); end
     %imshow(A);
-    %img_name,
     img_name = [img_name(1:end-3), '.png'];
-    %img_name,
     
     imwrite(A, img_name);
     
@@ -31,8 +29,14 @@ if max(A(:)) == 1
     A = A.*255;
 end
 
+% ------------------ find the colorful pixels ------------------
+a = f_find_cp(A, 'rgby');
+[x1, x2, y1, y2] = f_cut_margin(a);
+% pre-cut the images to the colorful logo area
+A = A(y1:y2, x1:x2, :);
+
 I = rgb2gray(A);
-%figure,imshow(I);
+% figure,imshow(I);
 
 
 % convert to black and white image
@@ -45,12 +49,15 @@ I = rgb2gray(A);
 level = 0.8;
 % --------------------------------------------
 bw = im2bw(A,level);
-% figure,imshow(bw)
+%figure,imshow(bw)
 
 % determine if the logo has coordinates, if yes, use the old code, if
 %  no coordinates, use the revised code. 
 B = f_img_keepBlk(A);
-% figure, imagesc(B);
+%figure, imagesc(B);
+
+
+
 
 [hasY, hasX] = f_if_have_XY_axis(B);
 
@@ -93,16 +100,19 @@ else
     I_main_s = zeros(1, cnt);
     consensus = repmat(' ', [1, cnt]);
     %for i=1:cnt
+
+    %A_sub = f_rm_black_pixels(A_sub);
+%     figure, imshow(A_sub);
+
     % --------------------------------------
 %     figure,
     % --------------------------------------
-
-    A_sub = f_rm_black_pixels(A_sub);
     for i=1:cnt
         colImg = A_sub(:, nodes_x(i):nodes_x(i+1), : );
+        %figure, imshow(colImg);
         %size(colImg),
         % --------------------------------------
-%         subplot(1,cnt,i),imshow(colImg);
+        % subplot(1,cnt,i), imshow(colImg);
         % --------------------------------------
         %i,
         %size(colImg),

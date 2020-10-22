@@ -14,14 +14,19 @@ else
     colImg = colImg(:, lr_dege-2 : end-lr_dege, :);
 end
     
-
-
 tmp1 = min( colImg, [], 2 );
 len = length(tmp1);
+
 
 % for the first letter (the biggest one)
 [letter,startp,endp,letterImg,restImg]=f_colImg_to_letter(colImg);
 %letter,
+if ix == 1
+    figure,
+    imshow(letterImg)
+    figure,
+    imshow(restImg)
+end
 
 % if ix == 3
 %     figure, subplot(1,2,1), imshow(letterImg);subplot(1,2,2),imshow(restImg);

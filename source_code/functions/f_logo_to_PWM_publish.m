@@ -36,7 +36,7 @@ end
 fname_enologo_txt = [prefix, '_enoLogo.txt' ];
 fname_csv = [prefix, '.csv' ];
 fname_meme_pssm_txt = [prefix, '_meme_pssm.txt' ];
-% fname_re_draw_logo_img = [prefix, '_rg_logo.png' ];
+fname_re_draw_logo_img = [prefix, '_rg_logo.png' ];
 
 
 %% Re-format the PWM to a enologos format, generate a txt file

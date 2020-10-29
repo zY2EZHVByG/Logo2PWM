@@ -30,10 +30,13 @@ if max(A(:)) == 1
 end
 
 % ------------------ find the colorful pixels ------------------
-a = f_find_cp(A, 'rgby');
-[x1, x2, y1, y2] = f_cut_margin(a);
+ix = f_find_cp(A, 'rgby');
+[x1, x2, y1, y2] = f_cut_margin(ix);
 % pre-cut the images to the colorful logo area
 A = A(y1:y2, x1:x2, :);
+% ---------------- remove unuseable black pixels ----------------
+A = f_rm_black_pixels2(A);
+
 
 I = rgb2gray(A);
 % figure,imshow(I);
@@ -105,17 +108,18 @@ else
 %     figure, imshow(A_sub);
 
     % --------------------------------------
-%     figure,
+%      figure,
     % --------------------------------------
     for i=1:cnt
         colImg = A_sub(:, nodes_x(i):nodes_x(i+1), : );
         %figure, imshow(colImg);
         %size(colImg),
         % --------------------------------------
-        % subplot(1,cnt,i), imshow(colImg);
+%          subplot(1,cnt,i), imshow(colImg);
         % --------------------------------------
         %i,
         %size(colImg),
+        colImg = f_rm_black_pixels2(colImg);
         [letter, I, I_main, pwm, letterImg] = f_colImg_to_letterImg(colImg, i);
         %subplot(1,cnt,i),imshow(letterImg);
         consensus(i) = letter;

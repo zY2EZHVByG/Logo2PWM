@@ -55,7 +55,7 @@ f_PSSMs_to_MEME_motif_file({PSSM}, {consensus}, fname_meme_pssm_txt);
 seqs = f_pwm_to_fake_seqs(PWM');
 [~, handle] = seqlogo(seqs);
 print(handle, fname_re_draw_logo_img, '-dpng','-r60');
-close(handle)
+% close(handle)
 
 end
 

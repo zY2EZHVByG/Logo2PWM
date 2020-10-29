@@ -1,4 +1,4 @@
-function [letter,startp,endp,letterImg,restImg]=f_colImg_to_letter(colImg)
+function [letter,startp,endp,letterImg,restImg]=f_colImg_to_letter(colImg, ix)
 
 
 % convert to a line image
@@ -6,13 +6,13 @@ function [letter,startp,endp,letterImg,restImg]=f_colImg_to_letter(colImg)
 % figure, imshow(colImg);
 whites = f_find_cp(colImg, 'w');
 for i=1:size(colImg, 1)
-    i,
-    r = colImg(i, :, :);
-    not_whites = r(1, ~whites(i,:), :);
+    %i,
+    row = colImg(i, :, :);
+    not_whites = row(1, ~whites(i,:), :);
     if size(not_whites,2) > 0 && sum(whites(i, :)) > 0
         m = median(not_whites, 2);
-        r(1, whites(i,:), :) = repmat(reshape(m, [1,1,length(m)]),[1 sum(whites(i,:)) 1]);
-        colImg(i, :, :) = r;
+        row(1, whites(i,:), :) = repmat(reshape(m, [1,1,length(m)]),[1 sum(whites(i,:)) 1]);
+        colImg(i, :, :) = row;
     end
 end
 % figure, imshow(colImg);
@@ -26,14 +26,20 @@ for i=1:3
 end
 %colImg_p(whites, :) = nan;
 tmp1 = nanmedian( colImg, 2 );
-% figure, imshow(tmp1);
 
-% for a sub image, give every element a cluster code (color code)
+
+
+% for a sub image, give every element a color code 
 codes = zeros(length(tmp1), 1);
 for i=1:length(tmp1)
-    codes(i) = f_determin_color( double(reshape(tmp1(i,1, :), [1,3]) ) );
+    codes(i) = f_determin_color2( double(reshape(tmp1(i,1, :), [1,3]) ) );
 end
 
+% if ix == 1
+%     figure, imshow(colImg); title('colImg');
+%     figure, imshow(tmp1); title('tmp1');
+%     tmp1,
+% end
 
 % find the start and end points for the biggest letter (the biggest cluster)
 startp = length(tmp1);
@@ -43,7 +49,12 @@ curr_code = 5; % start from white
 ct = 0;
 edge_secure = 2;
 
-
+% white pixel = the color of the last pixel 
+for i=2:length(tmp1)
+    if codes(i)==5
+        codes(i) = codes(i-1);
+    end
+end
 % 
 for i=2:length(tmp1)
     if codes(i)==5

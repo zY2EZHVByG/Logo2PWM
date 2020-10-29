@@ -17,16 +17,19 @@ end
 tmp1 = min( colImg, [], 2 );
 len = length(tmp1);
 
+% if ix == 1
+%    figure,imshow(colImg); title ('colImg in f_colImg_to_letterImg')
+% end
 
 % for the first letter (the biggest one)
-[letter,startp,endp,letterImg,restImg]=f_colImg_to_letter(colImg);
+[letter,startp,endp,letterImg,restImg]=f_colImg_to_letter(colImg, ix);
 %letter,
-if ix == 1
-    figure,
-    imshow(letterImg)
-    figure,
-    imshow(restImg)
-end
+% if ix == 20
+%     figure,
+%     imshow(letterImg)
+%     figure,
+%     imshow(restImg)
+% end
 
 % if ix == 3
 %     figure, subplot(1,2,1), imshow(letterImg);subplot(1,2,2),imshow(restImg);
@@ -36,7 +39,7 @@ I_main = 2.* (endp-startp) ./ len;
 
 % for the second letter
 if size(restImg,1)>3
-    [l2, startp2,endp2,letterImg2,restImg]=f_colImg_to_letter(restImg);
+    [l2, startp2,endp2,letterImg2,restImg]=f_colImg_to_letter(restImg, ix);
     I_2 = 2.* (endp2-startp2) ./ len;
     if strcmp(l2, letter) == 1
         l2 = '';

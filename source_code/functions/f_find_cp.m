@@ -22,6 +22,8 @@ elseif strcmp(code, 'rgby')
     res = f_find_rgby(img);
 elseif strcmp(code, 'nkw')
     res = ~f_find_black(img) & ~f_find_white(img);
+elseif strcmp(code, 'nrgbyw')
+    res = ~f_find_rgby(img) & ~f_find_white(img);
 end
 
 
@@ -32,7 +34,7 @@ rc = img(:,:,1); gc = img(:,:,2); bc = img(:,:,3);
 % c: center
 c = [0, 0, 0];
 %r: radius
-r = 50;
+r = 80;
 res = rc < c(1)+r & gc < c(2)+r & bc < c(3)+r;
 end
 
